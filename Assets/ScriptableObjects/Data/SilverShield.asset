@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56891cd817bd76b49a3a0d4e1dbf2020, type: 3}
   m_Name: SilverShield
   m_EditorClassIdentifier: 
-  displayName: 
-  description: 
-  price: 0
+  displayName: "\uAC00\uBCBC\uC6B4 \uC740\uBC29\uD328"
+  description: "\uAC00\uBCCD\uACE0 \uD734\uB300\uC131\uC774 \uC88B\uC740 \uC740\uBC29\uD328"
+  price: 1200
   type: 0
-  icon: {fileID: 0}
+  icon: {fileID: 1425144536, guid: 2e15eb8bac3484c4197ebd47242eb577, type: 3}
   canStack: 0
   maxStackAmount: 0
-  equipables: []
+  equipables:
+  - type: 1
+    value: 0
   consumables: []

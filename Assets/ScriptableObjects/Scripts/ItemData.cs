@@ -24,14 +24,14 @@ public enum ConsumeType
 public class ItemDataEquipable
 {
     public EquipType type;
-    public float value;
+    public int value;
 }
 
 [System.Serializable]
 public class ItemDataConsumable
 {
     public ConsumeType type;
-    public float value;
+    public int value;
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "New Item")]

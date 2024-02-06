@@ -31,6 +31,8 @@ public class Inventory : MonoBehaviour
 
     private int curEquipIndex;
 
+    private PlayerStatus status;
+
     [Header("Events")]
     public UnityEvent onOpenInventory;
     public UnityEvent onCloseInventory;
@@ -40,6 +42,7 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        status = GetComponent<PlayerStatus>();
     }
 
     private void Start()
@@ -169,6 +172,7 @@ public class Inventory : MonoBehaviour
         useButton.SetActive(selectedItem.item.type == ItemType.Consumable);
         equipButton.SetActive(selectedItem.item.type == ItemType.Equipable && !uiSlots[index].equipped);
         unEquipButton.SetActive(selectedItem.item.type == ItemType.Equipable && uiSlots[index].equipped);
+        sellButton.SetActive(true);
     }
 
     private void ClearSelectedItemWindow()
@@ -191,15 +195,15 @@ public class Inventory : MonoBehaviour
         {
             for (int i = 0; i < selectedItem.item.consumables.Length; i++)
             {
-                /*
                 switch (selectedItem.item.consumables[i].type)
                 {
-                    case ConsumableType.Health:
-                        condition.Heal(selectedItem.item.consumables[i].value); break;
-                    case ConsumableType.Hunger:
-                        condition.Eat(selectedItem.item.consumables[i].value); break;
+                    case ConsumeType.HP:
+                        status.HpUp(selectedItem.item.consumables[i].value); 
+                        break;
+                    case ConsumeType.MP:
+                        status.MpUp(selectedItem.item.consumables[i].value); 
+                        break;
                 }
-                */
             }
         }
         RemoveSelectedItem();
@@ -213,7 +217,7 @@ public class Inventory : MonoBehaviour
 
         uiSlots[selectedItemIndex].equipped = true;
         curEquipIndex = selectedItemIndex;
-        //EquipManager.instance.EquipNew(selectedItem.item);
+        EquipManager.instance.EquipNew(selectedItem.item);
         UpdateUI();
 
         SelectItem(selectedItemIndex);

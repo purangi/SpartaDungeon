@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56891cd817bd76b49a3a0d4e1dbf2020, type: 3}
   m_Name: ZeusSpear
   m_EditorClassIdentifier: 
-  displayName: 
-  description: 
-  price: 0
+  displayName: "\uC81C\uC6B0\uC2A4\uC758 \uCC3D"
+  description: "\uC2E0\uB4E4\uC758 \uC655 \uC81C\uC6B0\uC2A4\uAC00 \uC0AC\uC6A9\uD588\uB2E4\uB294
+    \uC804\uC124\uC758 \uCC3D"
+  price: 2000
   type: 0
-  icon: {fileID: 0}
+  icon: {fileID: 1439696583, guid: 2e15eb8bac3484c4197ebd47242eb577, type: 3}
   canStack: 0
   maxStackAmount: 0
-  equipables: []
+  equipables:
+  - type: 0
+    value: 0
   consumables: []

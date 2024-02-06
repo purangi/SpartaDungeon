@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56891cd817bd76b49a3a0d4e1dbf2020, type: 3}
   m_Name: LegendArmor
   m_EditorClassIdentifier: 
-  displayName: 
-  description: 
-  price: 0
+  displayName: "\uC804\uC124\uC758 \uAC11\uC637"
+  description: "\uACFC\uAC70 \uB9C8\uC655\uC744 \uBB34\uCC14\uB800\uB2E4\uB294 \uC6A9\uC0AC\uC758
+    \uAC11\uC637"
+  price: 3000
   type: 0
-  icon: {fileID: 0}
+  icon: {fileID: 1061518806, guid: 2e15eb8bac3484c4197ebd47242eb577, type: 3}
   canStack: 0
   maxStackAmount: 0
-  equipables: []
+  equipables:
+  - type: 1
+    value: 0
   consumables: []
