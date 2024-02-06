@@ -9,16 +9,29 @@ public enum ItemType
     Consumable
 }
 
-public enum ConsumableType
+public enum EquipType
 {
-    Health,
-    Mana
+    Atack,
+    Defense
+}
+
+public enum ConsumeType
+{
+    HP,
+    MP
+}
+
+[System.Serializable]
+public class ItemDataEquipable
+{
+    public EquipType type;
+    public float value;
 }
 
 [System.Serializable]
 public class ItemDataConsumable
 {
-    public ConsumableType type;
+    public ConsumeType type;
     public float value;
 }
 
@@ -35,6 +48,9 @@ public class ItemData : ScriptableObject
     [Header("Stacking")]
     public bool canStack;
     public int maxStackAmount;
+
+    [Header("Equipable")]
+    public ItemDataEquipable[] equipables;
 
     [Header("Consumable")]
     public ItemDataConsumable[] consumables;

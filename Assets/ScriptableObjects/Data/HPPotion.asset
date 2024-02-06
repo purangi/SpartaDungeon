@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56891cd817bd76b49a3a0d4e1dbf2020, type: 3}
-  m_Name: SpartSpear
+  m_Name: HPPotion
   m_EditorClassIdentifier: 
-  displayName: "\uC81C\uC6B0\uC2A4\uC758 \uCC3D"
+  displayName: 
   description: 
   price: 0
   type: 0
   icon: {fileID: 0}
   canStack: 0
   maxStackAmount: 0
-  consumables: []
+  equipables: []
