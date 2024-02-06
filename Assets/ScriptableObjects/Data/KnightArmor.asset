@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56891cd817bd76b49a3a0d4e1dbf2020, type: 3}
   m_Name: KnightArmor
   m_EditorClassIdentifier: 
-  displayName: "\uC218\uB828\uC790 \uAC11\uC637"
-  description: "\uCD08\uBCF4\uC790\uB97C \uC704\uD55C \uC218\uB828\uC5D0 \uB3C4\uC6C0\uC744
-    \uC8FC\uB294 \uAC11\uC637"
-  price: 500
-  type: 1
-  icon: {fileID: 1399061309, guid: 2e15eb8bac3484c4197ebd47242eb577, type: 3}
+  displayName: 
+  description: 
+  price: 0
+  type: 0
+  icon: {fileID: 0}
   canStack: 0
   maxStackAmount: 0
-  equipables:
-  - type: 1
-    value: 10
+  equipables: []
+  consumables: []
