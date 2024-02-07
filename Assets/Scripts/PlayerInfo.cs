@@ -25,14 +25,10 @@ public class PlayerInfo : MonoBehaviour
 
     private void ShowInfo()
     {
-        nameTxt.text = GameManager.instance.user.Name;
-        levelTxt.text = GameManager.instance.user.Level.ToString();
-        goldTxt.text = GameManager.instance.user.Gold.ToString();
-        SetExpBar();
-    }
-
-    void SetExpBar() //Exp»πµÊ Ω√ Ω««‡
-    {
-        expBar.fillAmount = (float)GameManager.instance.user.NowExp / (float)GameManager.instance.user.FullExp;
+        UserData user = GameManager.instance.user;
+        nameTxt.text = user.Name;
+        levelTxt.text = user.Level.ToString();
+        goldTxt.text = user.Gold.ToString();
+        expBar.fillAmount = (float)user.NowExp / (float)user.FullExp;
     }
 }
