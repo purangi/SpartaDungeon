@@ -9,7 +9,7 @@ public class ItemSlotUI : MonoBehaviour
     public Button button;
     public Image icon;
     public TextMeshProUGUI quantityText;
-    [SerializeField] private Image equipIcon;
+    [SerializeField] private GameObject equipIcon;
     private ItemSlot curSlot;
 
     public int index;
@@ -20,6 +20,7 @@ public class ItemSlotUI : MonoBehaviour
         curSlot = slot;
         icon.gameObject.SetActive(true);
         icon.sprite = slot.item.icon;
+        if(equipped) equipIcon.SetActive(true);
         quantityText.text = slot.quantity > 1 ? slot.quantity.ToString() : string.Empty;
     }
 
@@ -27,6 +28,7 @@ public class ItemSlotUI : MonoBehaviour
     {
         curSlot = null;
         icon.gameObject.SetActive(false);
+        equipIcon.SetActive(false);
         quantityText.text = string.Empty;
     }
 

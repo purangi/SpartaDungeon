@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
 
     private int curEquipIndex;
 
-    private PlayerStatus status;
+    //private PlayerStatus status;
 
     [Header("Events")]
     public UnityEvent onOpenInventory;
@@ -42,7 +42,7 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        status = GetComponent<PlayerStatus>();
+        //status = GetComponent<PlayerStatus>();
     }
 
     private void Start()
@@ -60,7 +60,7 @@ public class Inventory : MonoBehaviour
         ClearSelectedItemWindow();
     }
 
-    public void OnIventoryButton()
+    public void OnInventoryButton()
     {
         Toggle();
     }
@@ -198,10 +198,10 @@ public class Inventory : MonoBehaviour
                 switch (selectedItem.item.consumables[i].type)
                 {
                     case ConsumeType.HP:
-                        status.HpUp(selectedItem.item.consumables[i].value); 
+                        //status.HpUp(selectedItem.item.consumables[i].value); 
                         break;
                     case ConsumeType.MP:
-                        status.MpUp(selectedItem.item.consumables[i].value); 
+                        //status.MpUp(selectedItem.item.consumables[i].value); 
                         break;
                 }
             }
