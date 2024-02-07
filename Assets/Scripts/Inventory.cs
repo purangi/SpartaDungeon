@@ -20,18 +20,9 @@ public class Inventory : MonoBehaviour
     [Header("Selected Item")]
     private ItemSlot selectedItem;
     private int selectedItemIndex;
-    public TextMeshProUGUI selectedItemName;
-    public TextMeshProUGUI selectedItemDescription;
-    public TextMeshProUGUI selectedItemStatNames;
-    public TextMeshProUGUI selectedItemStatValues;
-    public GameObject useButton;
-    public GameObject equipButton;
-    public GameObject unEquipButton;
-    public GameObject sellButton;
+    public InvenPopUp invenPopUp;
 
     private int curEquipIndex;
-
-    //private PlayerStatus status;
 
     [Header("Events")]
     public UnityEvent onOpenInventory;
@@ -42,12 +33,10 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        //status = GetComponent<PlayerStatus>();
     }
 
     private void Start()
     {
-        inventoryWindow.SetActive(false);
         slots = new ItemSlot[uiSlots.Length];
 
         for (int i = 0; i < slots.Length; i++)
@@ -60,29 +49,16 @@ public class Inventory : MonoBehaviour
         ClearSelectedItemWindow();
     }
 
-    public void OnInventoryButton()
+    public void OpenInventory()
     {
-        Toggle();
+        inventoryWindow.SetActive(true);
+        onOpenInventory?.Invoke();
     }
 
-    public void Toggle()
-    {
-        if (inventoryWindow.activeInHierarchy)
-        {
-            inventoryWindow.SetActive(false);
-            onCloseInventory?.Invoke();
-        }
-        else
-        {
-            inventoryWindow.SetActive(true);
-            onOpenInventory?.Invoke();
-        }
-    }
-
-    public bool IsOpen()
-    {
-        return inventoryWindow.activeInHierarchy;
-    }
+    //public bool IsOpen()
+    //{
+    //    return inventoryWindow.activeInHierarchy;
+    //}
 
     public void AddItem(ItemData item)
     {
@@ -157,36 +133,12 @@ public class Inventory : MonoBehaviour
         selectedItem = slots[index];
         selectedItemIndex = index;
 
-        selectedItemName.text = selectedItem.item.displayName;
-        selectedItemDescription.text = selectedItem.item.description;
-
-        selectedItemStatNames.text = string.Empty;
-        selectedItemStatValues.text = string.Empty;
-
-        for (int i = 0; i < selectedItem.item.consumables.Length; i++)
-        {
-            selectedItemStatNames.text += selectedItem.item.consumables[i].type.ToString() + "\n";
-            selectedItemStatValues.text += selectedItem.item.consumables[i].value.ToString() + "\n";
-        }
-
-        useButton.SetActive(selectedItem.item.type == ItemType.Consumable);
-        equipButton.SetActive(selectedItem.item.type == ItemType.Equipable && !uiSlots[index].equipped);
-        unEquipButton.SetActive(selectedItem.item.type == ItemType.Equipable && uiSlots[index].equipped);
-        sellButton.SetActive(true);
+        invenPopUp.ShowPopUp(selectedItem.item, uiSlots[index].equipped);
     }
 
     private void ClearSelectedItemWindow()
     {
         selectedItem = null;
-        selectedItemName.text = string.Empty;
-        selectedItemDescription.text = string.Empty;
-
-        selectedItemStatNames.text = string.Empty;
-        selectedItemStatValues.text = string.Empty;
-
-        useButton.SetActive(false);
-        equipButton.SetActive(false);
-        unEquipButton.SetActive(false);
     }
 
     public void OnUseButton()
@@ -198,16 +150,18 @@ public class Inventory : MonoBehaviour
                 switch (selectedItem.item.consumables[i].type)
                 {
                     case ConsumeType.HP:
-                        //status.HpUp(selectedItem.item.consumables[i].value); 
+                        GameManager.instance.user.Stat.HpUp(selectedItem.item.consumables[i].value); 
                         break;
                     case ConsumeType.MP:
-                        //status.MpUp(selectedItem.item.consumables[i].value); 
+                        GameManager.instance.user.Stat.MpUp(selectedItem.item.consumables[i].value); 
                         break;
                 }
             }
         }
+
         RemoveSelectedItem();
     }
+
     public void OnEquipButton()
     {
         if (uiSlots[curEquipIndex].equipped)

@@ -23,7 +23,7 @@ public class PlayerInfo : MonoBehaviour
         ShowInfo();
     }
 
-    private void ShowInfo()
+    public void ShowInfo()
     {
         UserData user = GameManager.instance.user;
         nameTxt.text = user.Name;

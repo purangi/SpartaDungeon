@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class EquipManager : MonoBehaviour
 {
-    public ItemData curEquip;
+    public ItemData curWeapon;
+    public ItemData curArmor;
     public Transform equipParent;
-
 
     public static EquipManager instance;
     private void Awake()
@@ -17,15 +17,31 @@ public class EquipManager : MonoBehaviour
 
     public void EquipNew(ItemData item)
     {
-        UnEquip();
-        curEquip = item;
+        switch((int)item.type)
+        {
+            case 0:
+                UnEquip(0);
+                curWeapon = item;
+                break;
+            case 1:
+                UnEquip(1);
+                curArmor = item;
+                break;
+        }
     }
 
-    public void UnEquip()
+    public void UnEquip(int type)
     {
-        if (curEquip != null)
+        switch(type)
         {
-            curEquip = null;
+            case 0:
+                if(curWeapon != null)
+                    curWeapon = null;
+                break;
+            case 1:
+                if(curArmor != null)
+                    curArmor = null;
+                break;
         }
     }
 }

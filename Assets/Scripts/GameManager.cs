@@ -17,6 +17,16 @@ public class Status
         this.hp = hp;
         this.mp = mp;
     }
+
+    public void HpUp(int amount)
+    {
+        hp += amount;
+    }
+
+    public void MpUp(int amount)
+    {
+        mp += amount;
+    }
 }
 
 [System.Serializable]
@@ -36,6 +46,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public UserData user;
+    public PlayerInfo pInfo;
 
     private void Awake()
     {
@@ -43,5 +54,11 @@ public class GameManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+    }
+
+    public void Pay(int amount)
+    {
+        user.Gold -= amount;
+        pInfo.ShowInfo();
     }
 }
